@@ -21,9 +21,9 @@ public class Parking<T extends Vehicle> {
         long gap = outTimestamp - inTimestamp;
         long gapMin = gap / 1000 / 60;
 
-        gapMin = MathUtil.ceil(gapMin, 10);
-
         this.duration = gapMin;
+
+        gapMin = MathUtil.ceil(gapMin, 10);
 
         long gapMinWithoutMinimum = gapMin - vehicle.getMinimumMin();
 
