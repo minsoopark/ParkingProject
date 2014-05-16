@@ -23,6 +23,7 @@ public class Main {
         int menu;
 
         do {
+            System.out.println();
             System.out.println("원하는 기능을 선택하세요!");
             System.out.println("1. 입차");
             System.out.println("2. 출차");
@@ -39,6 +40,7 @@ public class Main {
             switch (menu) {
                 case 1:
                 {
+                    System.out.println();
                     System.out.println("차량 종류 및 용량을 입력하세요! 승용차(c), 트럭(t), 버스(b)");
                     System.out.print("> ");
 
@@ -47,11 +49,13 @@ public class Main {
 
                     int type = t.equals("c") ? Vehicle.TYPE_CAR : t.equals("t") ? Vehicle.TYPE_TRUCK : Vehicle.TYPE_BUS;
 
+                    System.out.println();
                     System.out.println("차량 번호를 입력하세요! (4자리 숫자)");
                     System.out.print("> ");
 
                     int carNum = scanner.nextInt();
 
+                    System.out.println();
                     System.out.println("입차시간을 입력하세요!");
                     System.out.print("> ");
 
@@ -82,6 +86,7 @@ public class Main {
                             }
                             break;
                         default:
+                            System.out.println();
                             System.out.println("차량 종류 입력이 잘못되었습니다!");
                             continue;
                     }
@@ -92,11 +97,13 @@ public class Main {
                 }
                 case 2:
                 {
+                    System.out.println();
                     System.out.println("출차할 차량번호를 입력하세요!");
                     System.out.print("> ");
 
                     int carNum = scanner.nextInt();
 
+                    System.out.println();
                     System.out.println("출차시간을 입력하세요!");
                     System.out.print("> ");
 
@@ -106,9 +113,11 @@ public class Main {
                     try {
                         parking = parkingLot.out(carNum, date);
                     } catch (NullPointerException e) {
+                        System.out.println();
                         System.out.println("입력한 차랑 번호에 대한 입차 정보가 없습니다!");
                         continue;
                     } catch (IllegalArgumentException e1) {
+                        System.out.println();
                         System.out.println("출차시간이 입차시간보다 앞설 수 없습니다!");
                         continue;
                     }
@@ -122,6 +131,7 @@ public class Main {
                             + (hour > 0 ? (hour + "시간 ") : "")
                             + minute + "분입니다.";
 
+                    System.out.println();
                     System.out.println(format);
                     System.out.println(String.format("주차요금은 %d 원입니다.", parking.getCost()));
 
@@ -129,17 +139,20 @@ public class Main {
                 }
                 case 3:
                 {
+                    System.out.println();
                     parkingLot.showAll();
                     break;
                 }
                 case 4:
                 {
+                    System.out.println();
                     System.out.println("변경할 차량종류를 입력하세요!");
                     System.out.println("1. 승용차  2. 버스  3. 트럭");
                     System.out.print("> ");
 
                     int type = scanner.nextInt() - 1;
 
+                    System.out.println();
                     System.out.println("변경할 요금을 입력하세요!");
                     System.out.print("> ");
 
@@ -164,6 +177,7 @@ public class Main {
                                 scanner.nextInt()
                         );
                     } else {
+                        System.out.println();
                         System.out.println("차량 종류 입력이 잘못되었습니다!");
                         continue;
                     }
@@ -171,7 +185,8 @@ public class Main {
                 }
                 case 5:
                 {
-                    System.out.println("매출액을 계산을 날짜를 입력하세요!");
+                    System.out.println();
+                    System.out.println("매출액을 계산할 날짜를 입력하세요!");
                     System.out.print("> ");
 
                     Date date = inputDateSimple();
@@ -180,10 +195,12 @@ public class Main {
                     try {
                         cost = parkingLot.getTotalCost(date);
                     } catch (NullPointerException e) {
+                        System.out.println();
                         System.out.println("해당 날짜에 매출 정보가 없습니다!");
                         continue;
                     }
 
+                    System.out.println();
                     System.out.println(String.format("매출총액 : %d원", cost));
                     break;
                 }
